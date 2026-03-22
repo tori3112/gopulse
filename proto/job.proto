@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package job;
+
+option go_package = "gopulse/proto";
+
+service JobService {
+  rpc SubmitJob (JobRequest) returns (JobResponse);
+  rpc GetJobStatus (JobStatusRequest) returns (JobStatus);
+}
+
+message JobRequest {
+  string payload = 1;
+}
+
+message JobResponse {
+  string job_id = 1;
+}
+
+message JobStatusRequest {
+  string job_id = 1;
+}
+
+message JobStatus {
+  string job_id = 1;
+  string status = 2;
+  string result = 3;
+}
